@@ -112,3 +112,49 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const container = document.querySelector('.articles');
+
+data.map(data => {
+  return container.appendChild(createComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+})
+
+function createComponent(title, date, content1, content2, content3){
+  //Creating Elements
+  const article = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const dateP = document.createElement('p');
+  const contentOne = document.createElement('p');
+  const contentTwo = document.createElement('p');
+  const contentThree = document.createElement('p');
+  const button = document.createElement('span');
+  
+  //Appending Elements
+  article.appendChild(h2);
+  article.appendChild(dateP);
+  article.appendChild(contentOne);
+  article.appendChild(contentTwo);
+  article.appendChild(contentThree);
+  article.appendChild(button);
+
+  //Add Classes To Elements
+  article.classList.add('article');
+  dateP.classList.add('date');
+  button.classList.add('expandButton');
+
+  //Inputting Content
+  h2.textContent = title;
+  dateP.textContent = date;
+  contentOne.textContent = content1;
+  contentTwo.textContent = content2;
+  contentThree.textContent = content3;
+  button.textContent = "EXPAND";
+
+  //Event Listener On Bootun
+  button.addEventListener('click', () => {
+      article.classList.toggle('article-open');
+      button.classList.toggle('closeButton')
+  })
+
+  return article;
+}
