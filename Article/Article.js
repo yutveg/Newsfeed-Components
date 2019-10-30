@@ -127,7 +127,7 @@ function createComponent(title, date, content1, content2, content3){
   const contentOne = document.createElement('p');
   const contentTwo = document.createElement('p');
   const contentThree = document.createElement('p');
-  const button = document.createElement('span');
+  const buttonExpand = document.createElement('span');
   
   //Appending Elements
   article.appendChild(h2);
@@ -135,12 +135,12 @@ function createComponent(title, date, content1, content2, content3){
   article.appendChild(contentOne);
   article.appendChild(contentTwo);
   article.appendChild(contentThree);
-  article.appendChild(button);
+  article.appendChild(buttonExpand);
 
   //Add Classes To Elements
   article.classList.add('article');
   dateP.classList.add('date');
-  button.classList.add('expandButton');
+  buttonExpand.classList.add('expandButton');
 
   //Inputting Content
   h2.textContent = title;
@@ -148,12 +148,11 @@ function createComponent(title, date, content1, content2, content3){
   contentOne.textContent = content1;
   contentTwo.textContent = content2;
   contentThree.textContent = content3;
-  button.textContent = "EXPAND";
+  buttonExpand.textContent = "\u21d5 \u21d5";
 
   //Event Listener On Bootun
-  button.addEventListener('click', () => {
+  buttonExpand.addEventListener('click', () => {
       article.classList.toggle('article-open');
-      button.classList.toggle('closeButton')
   })
 
   return article;
